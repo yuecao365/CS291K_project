@@ -1,0 +1,705 @@
+{
+  "mode": "gt",
+  "task_id": "[mms_issue]bad_network_preference|user_abroad_roaming_disabled_on[PERSONA:None]",
+  "trial": 2,
+  "termination_reason": "TerminationReason.USER_STOP",
+  "n_messages": 26,
+  "reward": null,
+  "guidance_log": [],
+  "simulation": {
+    "id": "4d39f91b-15b2-41bf-9229-4435cb4e4883",
+    "task_id": "[mms_issue]bad_network_preference|user_abroad_roaming_disabled_on[PERSONA:None]",
+    "timestamp": "2026-06-09T10:03:18.062378",
+    "start_time": "2026-06-09T10:02:49.446040",
+    "end_time": "2026-06-09T10:03:18.062378",
+    "duration": 28.612028200004715,
+    "termination_reason": "user_stop",
+    "agent_cost": 0.0092868,
+    "user_cost": 0.0045936,
+    "reward_info": null,
+    "messages": [
+      {
+        "role": "assistant",
+        "content": "Hi! How can I help you today?",
+        "tool_calls": null,
+        "turn_idx": 0,
+        "timestamp": "2026-06-09T10:02:49.448244",
+        "cost": 0.0,
+        "usage": null,
+        "raw_data": null
+      },
+      {
+        "role": "user",
+        "content": "Hello! I'm having trouble sending MMS messages using my messaging app. It has been like this for the past few hours. I'd like to get it fixed so I can send MMS messages again.",
+        "tool_calls": null,
+        "turn_idx": 1,
+        "timestamp": "2026-06-09T10:02:50.491091",
+        "cost": 0.0004236,
+        "usage": {
+          "completion_tokens": 39,
+          "prompt_tokens": 2247
+        },
+        "raw_data": {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "content": "Hello! I'm having trouble sending MMS messages using my messaging app. It has been like this for the past few hours. I'd like to get it fixed so I can send MMS messages again.",
+            "role": "assistant",
+            "tool_calls": null,
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "Could you please provide me with your phone number or other identification details so I can verify your account and check your line and service status? This will help me assist you better with your MMS issue.",
+        "tool_calls": null,
+        "turn_idx": 2,
+        "timestamp": "2026-06-09T10:02:52.645036",
+        "cost": 0.0026276,
+        "usage": {
+          "completion_tokens": 40,
+          "prompt_tokens": 6409
+        },
+        "raw_data": {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "content": "Could you please provide me with your phone number or other identification details so I can verify your account and check your line and service status? This will help me assist you better with your MMS issue.",
+            "role": "assistant",
+            "tool_calls": null,
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "role": "user",
+        "content": "My phone number is 555-123-2002, and my name is John Smith. I'm currently abroad in France. Please let me know if you need any other details to assist with the MMS issue.",
+        "tool_calls": null,
+        "turn_idx": 3,
+        "timestamp": "2026-06-09T10:02:53.786890",
+        "cost": 0.00034879999999999997,
+        "usage": {
+          "completion_tokens": 43,
+          "prompt_tokens": 2332
+        },
+        "raw_data": {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "content": "My phone number is 555-123-2002, and my name is John Smith. I'm currently abroad in France. Please let me know if you need any other details to assist with the MMS issue.",
+            "role": "assistant",
+            "tool_calls": null,
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_XZN2Er34hzrc1hC6ty8jwgvh",
+            "name": "get_customer_by_phone",
+            "arguments": {
+              "phone_number": "555-123-2002"
+            },
+            "requestor": "assistant"
+          }
+        ],
+        "turn_idx": 4,
+        "timestamp": "2026-06-09T10:02:54.694778",
+        "cost": 0.0011367999999999999,
+        "usage": {
+          "completion_tokens": 22,
+          "prompt_tokens": 6498
+        },
+        "raw_data": {
+          "finish_reason": "tool_calls",
+          "index": 0,
+          "message": {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "function": {
+                  "arguments": "{\"phone_number\":\"555-123-2002\"}",
+                  "name": "get_customer_by_phone"
+                },
+                "id": "call_XZN2Er34hzrc1hC6ty8jwgvh",
+                "type": "function"
+              }
+            ],
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "id": "call_XZN2Er34hzrc1hC6ty8jwgvh",
+        "role": "tool",
+        "content": "{\"customer_id\": \"C1001\", \"full_name\": \"John Smith\", \"date_of_birth\": \"1985-06-15\", \"email\": \"john.smith@example.com\", \"phone_number\": \"555-123-2002\", \"address\": {\"street\": \"123 Main St\", \"city\": \"Anytown\", \"state\": \"CA\", \"zip_code\": \"90210\"}, \"account_status\": \"Active\", \"payment_methods\": [{\"method_type\": \"Credit Card\", \"account_number_last_4\": \"1235\", \"expiration_date\": \"12/2026\"}], \"line_ids\": [\"L1001\", \"L1002\", \"L1003\"], \"bill_ids\": [\"B1001\", \"B1002\", \"B1003\"], \"created_at\": \"2025-01-15 10:30:00\", \"last_extension_date\": null, \"goodwill_credit_used_this_year\": 25.0}",
+        "requestor": "assistant",
+        "error": false,
+        "turn_idx": 5,
+        "timestamp": "2026-06-09T10:02:54.698782"
+      },
+      {
+        "role": "assistant",
+        "content": "Thank you, John. Since you are currently abroad, I want to first check and ensure your line is roaming enabled, which is required for mobile data and MMS to work outside your home network. Also, I want to check your phone's network mode preference to make sure it supports the necessary network technology for MMS. \n\nPlease perform the following action on your phone: set_network_mode_preference(mode=4g_5g_preferred). This will allow your phone to connect to 4G or 5G networks which are suitable for MMS. Let me know once you have done that.",
+        "tool_calls": null,
+        "turn_idx": 6,
+        "timestamp": "2026-06-09T10:02:57.360043",
+        "cost": 0.0009647999999999999,
+        "usage": {
+          "completion_tokens": 120,
+          "prompt_tokens": 6732
+        },
+        "raw_data": {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "content": "Thank you, John. Since you are currently abroad, I want to first check and ensure your line is roaming enabled, which is required for mobile data and MMS to work outside your home network. Also, I want to check your phone's network mode preference to make sure it supports the necessary network technology for MMS. \n\nPlease perform the following action on your phone: set_network_mode_preference(mode=4g_5g_preferred). This will allow your phone to connect to 4G or 5G networks which are suitable for MMS. Let me know once you have done that.",
+            "role": "assistant",
+            "tool_calls": null,
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "role": "user",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_cp8SNJnKtmFYOGTT7xcSdZRE",
+            "name": "set_network_mode_preference",
+            "arguments": {
+              "mode": "4g_5g_preferred"
+            },
+            "requestor": "user"
+          }
+        ],
+        "turn_idx": 7,
+        "timestamp": "2026-06-09T10:02:58.610346",
+        "cost": 0.00034599999999999995,
+        "usage": {
+          "completion_tokens": 23,
+          "prompt_tokens": 2501
+        },
+        "raw_data": {
+          "finish_reason": "tool_calls",
+          "index": 0,
+          "message": {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "function": {
+                  "arguments": "{\"mode\":\"4g_5g_preferred\"}",
+                  "name": "set_network_mode_preference"
+                },
+                "id": "call_cp8SNJnKtmFYOGTT7xcSdZRE",
+                "type": "function"
+              }
+            ],
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "id": "call_cp8SNJnKtmFYOGTT7xcSdZRE",
+        "role": "tool",
+        "content": "Preferred Network Mode set to: 4g_5g_preferred\nStatus Bar: \ud83d\udcf6\u2074 Excellent | 5G | \ud83d\udcf1 Data Enabled | \ud83d\udd0b 80%",
+        "requestor": "user",
+        "error": false,
+        "turn_idx": 8,
+        "timestamp": "2026-06-09T10:02:58.615695"
+      },
+      {
+        "role": "user",
+        "content": "I have set the network mode preference to 4G/5G preferred on my phone. The status bar now shows excellent 4G/5G signal strength, mobile data enabled, and 80% battery. What should I do next?",
+        "tool_calls": null,
+        "turn_idx": 9,
+        "timestamp": "2026-06-09T10:02:59.945130",
+        "cost": 0.0005732000000000001,
+        "usage": {
+          "completion_tokens": 51,
+          "prompt_tokens": 2573
+        },
+        "raw_data": {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "content": "I have set the network mode preference to 4G/5G preferred on my phone. The status bar now shows excellent 4G/5G signal strength, mobile data enabled, and 80% battery. What should I do next?",
+            "role": "assistant",
+            "tool_calls": null,
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_F78Widue99fBg60nj94pT0Fa",
+            "name": "enable_roaming",
+            "arguments": {
+              "customer_id": "C1001",
+              "line_id": "L1002"
+            },
+            "requestor": "assistant"
+          }
+        ],
+        "turn_idx": 10,
+        "timestamp": "2026-06-09T10:03:01.109683",
+        "cost": 0.0007684,
+        "usage": {
+          "completion_tokens": 25,
+          "prompt_tokens": 6909
+        },
+        "raw_data": {
+          "finish_reason": "tool_calls",
+          "index": 0,
+          "message": {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "function": {
+                  "arguments": "{\"customer_id\":\"C1001\",\"line_id\":\"L1002\"}",
+                  "name": "enable_roaming"
+                },
+                "id": "call_F78Widue99fBg60nj94pT0Fa",
+                "type": "function"
+              }
+            ],
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "id": "call_F78Widue99fBg60nj94pT0Fa",
+        "role": "tool",
+        "content": "Roaming enabled successfully",
+        "requestor": "assistant",
+        "error": false,
+        "turn_idx": 11,
+        "timestamp": "2026-06-09T10:03:01.114685"
+      },
+      {
+        "role": "assistant",
+        "content": "I have enabled roaming on your line to ensure mobile data works properly while you are abroad. Please try sending an MMS message again and let me know if the issue persists or if you need further assistance.",
+        "tool_calls": null,
+        "turn_idx": 12,
+        "timestamp": "2026-06-09T10:03:02.204574",
+        "cost": 0.0007708,
+        "usage": {
+          "completion_tokens": 41,
+          "prompt_tokens": 6947
+        },
+        "raw_data": {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "content": "I have enabled roaming on your line to ensure mobile data works properly while you are abroad. Please try sending an MMS message again and let me know if the issue persists or if you need further assistance.",
+            "role": "assistant",
+            "tool_calls": null,
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "role": "user",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_HbPhsk3ekeBnlV74tYQRvf2r",
+            "name": "toggle_roaming",
+            "arguments": {},
+            "requestor": "user"
+          }
+        ],
+        "turn_idx": 13,
+        "timestamp": "2026-06-09T10:03:03.127253",
+        "cost": 0.000318,
+        "usage": {
+          "completion_tokens": 11,
+          "prompt_tokens": 2671
+        },
+        "raw_data": {
+          "finish_reason": "tool_calls",
+          "index": 0,
+          "message": {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "function": {
+                  "arguments": "{}",
+                  "name": "toggle_roaming"
+                },
+                "id": "call_HbPhsk3ekeBnlV74tYQRvf2r",
+                "type": "function"
+              }
+            ],
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "id": "call_HbPhsk3ekeBnlV74tYQRvf2r",
+        "role": "tool",
+        "content": "Data Roaming is now OFF.\nStatus Bar: \ud83d\udcf6\u2074 Excellent | 5G | \ud83d\udcf1 Data Enabled | \ud83d\udd0b 80%",
+        "requestor": "user",
+        "error": false,
+        "turn_idx": 14,
+        "timestamp": "2026-06-09T10:03:03.128992"
+      },
+      {
+        "role": "user",
+        "content": "I noticed that data roaming was turned off. I just tried to turn it on, but it is currently off. Could you please enable data roaming on my phone so I can try sending an MMS message again?",
+        "tool_calls": null,
+        "turn_idx": 15,
+        "timestamp": "2026-06-09T10:03:05.345135",
+        "cost": 0.0003892,
+        "usage": {
+          "completion_tokens": 43,
+          "prompt_tokens": 2721
+        },
+        "raw_data": {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "content": "I noticed that data roaming was turned off. I just tried to turn it on, but it is currently off. Could you please enable data roaming on my phone so I can try sending an MMS message again?",
+            "role": "assistant",
+            "tool_calls": null,
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "I have already enabled roaming on your line from the carrier side. However, enabling data roaming on your phone device is something you need to do manually in your phone settings. Since you just tried turning it on and it is still off, please try turning it on again in your phone's settings. If you need guidance on how to do that, I can help walk you through it.",
+        "tool_calls": null,
+        "turn_idx": 16,
+        "timestamp": "2026-06-09T10:03:07.380930",
+        "cost": 0.000866,
+        "usage": {
+          "completion_tokens": 78,
+          "prompt_tokens": 7037
+        },
+        "raw_data": {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "content": "I have already enabled roaming on your line from the carrier side. However, enabling data roaming on your phone device is something you need to do manually in your phone settings. Since you just tried turning it on and it is still off, please try turning it on again in your phone's settings. If you need guidance on how to do that, I can help walk you through it.",
+            "role": "assistant",
+            "tool_calls": null,
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "role": "user",
+        "content": "Thanks for the clarification. Could you please guide me on how to manually enable data roaming in my phone's settings? I'd appreciate the step-by-step instructions.",
+        "tool_calls": null,
+        "turn_idx": 17,
+        "timestamp": "2026-06-09T10:03:08.730965",
+        "cost": 0.0004608,
+        "usage": {
+          "completion_tokens": 32,
+          "prompt_tokens": 2848
+        },
+        "raw_data": {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "content": "Thanks for the clarification. Could you please guide me on how to manually enable data roaming in my phone's settings? I'd appreciate the step-by-step instructions.",
+            "role": "assistant",
+            "tool_calls": null,
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "To manually enable data roaming on your phone, please follow these general steps (the exact menu names might vary slightly depending on your phone's make and model):\n\n1. Open the \"Settings\" app on your phone.\n2. Tap on \"Network & Internet\" or \"Connections.\"\n3. Select \"Mobile Network\" or \"Cellular Network.\"\n4. Look for an option called \"Data Roaming.\"\n5. Toggle the switch next to \"Data Roaming\" to turn it ON.\n6. You may see a warning about additional charges; confirm that you want to enable data roaming.\n\nAfter you enable data roaming, try sending an MMS message again. Let me know if you need help with anything else.",
+        "tool_calls": null,
+        "turn_idx": 18,
+        "timestamp": "2026-06-09T10:03:12.229111",
+        "cost": 0.0012851999999999998,
+        "usage": {
+          "completion_tokens": 143,
+          "prompt_tokens": 7153
+        },
+        "raw_data": {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "content": "To manually enable data roaming on your phone, please follow these general steps (the exact menu names might vary slightly depending on your phone's make and model):\n\n1. Open the \"Settings\" app on your phone.\n2. Tap on \"Network & Internet\" or \"Connections.\"\n3. Select \"Mobile Network\" or \"Cellular Network.\"\n4. Look for an option called \"Data Roaming.\"\n5. Toggle the switch next to \"Data Roaming\" to turn it ON.\n6. You may see a warning about additional charges; confirm that you want to enable data roaming.\n\nAfter you enable data roaming, try sending an MMS message again. Let me know if you need help with anything else.",
+            "role": "assistant",
+            "tool_calls": null,
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "role": "user",
+        "content": "Thanks for the instructions. I will enable data roaming on my phone now and try sending an MMS message again.",
+        "tool_calls": [
+          {
+            "id": "call_DT6if0iH3J9YBCarobEWZovu",
+            "name": "toggle_roaming",
+            "arguments": {},
+            "requestor": "user"
+          }
+        ],
+        "turn_idx": 19,
+        "timestamp": "2026-06-09T10:03:13.638985",
+        "cost": 0.0004596,
+        "usage": {
+          "completion_tokens": 34,
+          "prompt_tokens": 3029
+        },
+        "raw_data": {
+          "finish_reason": "tool_calls",
+          "index": 0,
+          "message": {
+            "content": "Thanks for the instructions. I will enable data roaming on my phone now and try sending an MMS message again.",
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "function": {
+                  "arguments": "{}",
+                  "name": "toggle_roaming"
+                },
+                "id": "call_DT6if0iH3J9YBCarobEWZovu",
+                "type": "function"
+              }
+            ],
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "id": "call_DT6if0iH3J9YBCarobEWZovu",
+        "role": "tool",
+        "content": "Data Roaming is now ON.\nStatus Bar: \ud83d\udcf6\u2074 Excellent | 5G | \ud83d\udcf1 Data Enabled | \ud83d\udd0b 80%",
+        "requestor": "user",
+        "error": false,
+        "turn_idx": 20,
+        "timestamp": "2026-06-09T10:03:13.642038"
+      },
+      {
+        "role": "user",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_nZInmxT5bJJLvy3c0oVFPfLp",
+            "name": "can_send_mms",
+            "arguments": {},
+            "requestor": "user"
+          }
+        ],
+        "turn_idx": 21,
+        "timestamp": "2026-06-09T10:03:14.411739",
+        "cost": 0.0004164,
+        "usage": {
+          "completion_tokens": 12,
+          "prompt_tokens": 3105
+        },
+        "raw_data": {
+          "finish_reason": "tool_calls",
+          "index": 0,
+          "message": {
+            "content": null,
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "function": {
+                  "arguments": "{}",
+                  "name": "can_send_mms"
+                },
+                "id": "call_nZInmxT5bJJLvy3c0oVFPfLp",
+                "type": "function"
+              }
+            ],
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "id": "call_nZInmxT5bJJLvy3c0oVFPfLp",
+        "role": "tool",
+        "content": "Your messaging app can send MMS messages.",
+        "requestor": "user",
+        "error": false,
+        "turn_idx": 22,
+        "timestamp": "2026-06-09T10:03:14.412738"
+      },
+      {
+        "role": "user",
+        "content": "I have enabled data roaming on my phone as per your instructions, and I just verified that my messaging app is now able to send MMS messages. It seems the issue is resolved. Thank you for your help! Is there anything else I need to check or do?",
+        "tool_calls": null,
+        "turn_idx": 23,
+        "timestamp": "2026-06-09T10:03:15.686616",
+        "cost": 0.0004572,
+        "usage": {
+          "completion_tokens": 54,
+          "prompt_tokens": 3135
+        },
+        "raw_data": {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "content": "I have enabled data roaming on my phone as per your instructions, and I just verified that my messaging app is now able to send MMS messages. It seems the issue is resolved. Thank you for your help! Is there anything else I need to check or do?",
+            "role": "assistant",
+            "tool_calls": null,
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "I'm glad to hear your MMS messaging is working now! There's nothing else you need to do at this time. If you experience any further issues or need assistance with anything else, feel free to reach out. Have a great day!",
+        "tool_calls": null,
+        "turn_idx": 24,
+        "timestamp": "2026-06-09T10:03:17.097383",
+        "cost": 0.0008671999999999999,
+        "usage": {
+          "completion_tokens": 47,
+          "prompt_tokens": 7356
+        },
+        "raw_data": {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "content": "I'm glad to hear your MMS messaging is working now! There's nothing else you need to do at this time. If you experience any further issues or need assistance with anything else, feel free to reach out. Have a great day!",
+            "role": "assistant",
+            "tool_calls": null,
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      },
+      {
+        "role": "user",
+        "content": "Thank you very much! Have a great day as well. ###STOP###",
+        "tool_calls": null,
+        "turn_idx": 25,
+        "timestamp": "2026-06-09T10:03:18.059378",
+        "cost": 0.0004008,
+        "usage": {
+          "completion_tokens": 16,
+          "prompt_tokens": 3242
+        },
+        "raw_data": {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "content": "Thank you very much! Have a great day as well. ###STOP###",
+            "role": "assistant",
+            "tool_calls": null,
+            "function_call": null,
+            "provider_specific_fields": {
+              "refusal": null
+            },
+            "annotations": []
+          },
+          "provider_specific_fields": {}
+        }
+      }
+    ],
+    "trial": null,
+    "seed": 2
+  }
+}
