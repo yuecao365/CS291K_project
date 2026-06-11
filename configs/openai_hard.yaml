@@ -1,0 +1,45 @@
+# HARD subset for the capability-decomposition ablation (planning vs guiding).
+# Uses an EXPLICIT curated list (configs/hard_task_ids.json): 12 tasks that gpt-4.1-mini
+# (our base) fails 0/4 (one 1/4) in the official run -- empirically hardest -- chosen for
+# diversity: intents mms/mobile_data/service, 17 distinct fault types, personas None/Easy/Hard,
+# fault-counts 2-9. Far more discriminative than telecom_small (single-fault, ~0.79, ceiling).
+# Same models as openai.yaml so numbers stay comparable to our other runs.
+#
+# Run all three modes on THIS SAME 12-task list (venv active, key set):
+#   $env:PYTHONUTF8="1"
+#   .venv/Scripts/python.exe scripts/run_ablation.py --mode vanilla --config configs/openai_hard.yaml --out results/cost_log_hard
+#   .venv/Scripts/python.exe scripts/run_ablation.py --mode gt      --config configs/openai_hard.yaml --out results/cost_log_hard
+#   .venv/Scripts/python.exe scripts/run_ablation.py --mode solo    --config configs/openai_hard.yaml --out results/cost_log_hard
+#   .venv/Scripts/python.exe scripts/aggregate.py
+#
+# Read it:  gt >> vanilla -> planning was the bottleneck;  gt ~ vanilla -> GUIDING the user is.
+
+domain: telecom
+task_set: telecom_full
+task_ids_file: "configs/hard_task_ids.json"   # explicit 12-task curated hard+diverse list
+benchmark_commit: ""
+max_steps: 100
+
+subset:
+  size: 12
+  seed: 0
+
+rollout:
+  trials: 2
+  method: vanilla
+
+eval:
+  k: 2
+
+base_model:
+  model: "gpt-4.1-mini"
+  temperature: 0.7
+
+verifier_model:
+  model: "gpt-4o-mini"
+  temperature: 0.0
+  max_tokens: 512
+
+paths:
+  rubric: "configs/rubrics/telecom.json"
+  cost_log: "results/cost_log_hard.csv"

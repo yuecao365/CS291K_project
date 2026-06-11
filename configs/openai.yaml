@@ -1,0 +1,40 @@
+# OpenAI base-agent config. Use when the local Qwen agent loops / overflows context.
+# Run with:  export OPENAI_API_KEY=sk-...   then   python -m src.eval.run --config configs/openai.yaml --method vanilla --limit 3
+# gpt-4o-mini has a 128k context (no overflow), native reliable tool calling (no hermes
+# parser bugs), and loops far less than Qwen -> clean dual-control data, ~cents per task.
+
+domain: telecom
+task_set: telecom_small
+benchmark_commit: ""
+max_steps: 100                 # 40 was a Qwen 32k-ctx workaround; gpt-4o-mini is 128k ctx
+                               # so give telecom dual-control room to actually finish.
+
+subset:
+  size: 20
+  seed: 0
+
+rollout:
+  trials: 4
+  method: guidance_verify_repair
+
+eval:
+  k: 2
+
+# Base agent + user simulator on real OpenAI. base_url omitted -> LiteLLM native OpenAI
+# route; api_key omitted -> read from $OPENAI_API_KEY. No "openai/" prefix needed.
+# Base = gpt-4.1-mini: gpt-4o-mini was too weak to drive telecom dual-control to completion
+# (15/20 timed out at 100 steps). 4.1-mini is much stronger at multi-turn tool use, still cheap.
+base_model:
+  model: "gpt-4.1-mini"
+  temperature: 0.7             # >0 so k trials differ
+
+# Verifier + repair stays on the cheaper gpt-4o-mini (cheap-but-capable verifier; this also
+# keeps the verifier strictly cheaper than the base agent, as the cost story wants).
+verifier_model:
+  model: "gpt-4o-mini"
+  temperature: 0.0
+  max_tokens: 512
+
+paths:
+  rubric: "configs/rubrics/telecom.json"
+  cost_log: "results/cost_log.csv"

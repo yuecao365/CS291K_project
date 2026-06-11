@@ -1,0 +1,39 @@
+# ITEM #2: "is the VERIFY PROMPT the constraint?"
+# Same models as configs/openai.yaml (verifier = gpt-4o-mini). The ONLY change vs the
+# baseline run is the prompt, selected at runtime via env var VERIFY_MODE=hirecall.
+# Writes to a separate cost log for a clean A/B.
+#
+# Run (venv active, key set):
+#   $env:PYTHONUTF8="1"; $env:VERIFY_MODE="hirecall"
+#   .venv/Scripts/python.exe -m src.eval.run --config configs/openai_hirecall.yaml --method guidance_verify_repair
+#   Remove-Item Env:\VERIFY_MODE   # reset afterwards so later runs use the default prompt
+# -> results/cost_log_hirecall_guidance_verify_repair.csv  (compare vs cost_log_guidance_verify_repair.csv)
+
+domain: telecom
+task_set: telecom_small
+benchmark_commit: ""
+max_steps: 100
+
+subset:
+  size: 20
+  seed: 0
+
+rollout:
+  trials: 4
+  method: guidance_verify_repair
+
+eval:
+  k: 2
+
+base_model:
+  model: "gpt-4.1-mini"
+  temperature: 0.7
+
+verifier_model:
+  model: "gpt-4o-mini"
+  temperature: 0.0
+  max_tokens: 512
+
+paths:
+  rubric: "configs/rubrics/telecom.json"
+  cost_log: "results/cost_log_hirecall.csv"   # -> cost_log_hirecall_<method>.csv

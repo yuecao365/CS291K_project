@@ -1,0 +1,49 @@
+# Ultra-small report experiment config.
+#
+# Purpose:
+#   Use the existing 4-task trace subset as the cheapest credible follow-up for the
+#   report. These are hard multi-fault Telecom tasks where the easy-set ceiling is
+#   less of a problem, but the run is still small enough to repeat.
+#
+# Suggested run:
+#   .venv/Scripts/python.exe scripts/run_report_micro.py
+#
+# This runs five modes with the same task set/trials:
+#   vanilla, gt, gtrepair_gated, selfrevise, placebo
+#
+# Follow-up verifier-role experiment:
+#   .venv/Scripts/python.exe scripts/run_report_micro.py --out results/report_micro_epistemic --modes vanilla gt epistemic gt_epistemic
+#
+# Interpret together with the existing oracle results:
+#   results/oracle_repair.csv and results/oracle_full60.csv
+
+domain: telecom
+task_set: telecom_full
+task_ids_file: "configs/trace_task_ids.json"
+benchmark_commit: ""
+max_steps: 100
+
+subset:
+  size: 4
+  seed: 0
+
+rollout:
+  trials: 4
+  method: vanilla
+
+eval:
+  k: 2
+
+base_model:
+  model: "gpt-4.1-mini"
+  temperature: 0.7
+
+verifier_model:
+  model: "gpt-4o-mini"
+  temperature: 0.0
+  max_tokens: 512
+
+paths:
+  rubric: "configs/rubrics/telecom.json"
+  rubric_procedural: "configs/rubrics/telecom_procedural.json"
+  cost_log: "results/report_micro.csv"

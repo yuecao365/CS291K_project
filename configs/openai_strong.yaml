@@ -1,0 +1,40 @@
+# ITEM #1: "is the VERIFIER/REPAIR MODEL the constraint?"
+# Identical to configs/openai.yaml EXCEPT the verifier+repair model is upgraded
+# gpt-4o-mini -> gpt-4.1 (a much stronger judge/rewriter). Base agent unchanged so the
+# only moving part is verifier/repair capability. Writes to a SEPARATE cost log so the
+# original results/cost_log_*.csv are not clobbered -> direct A/B.
+#
+# Run (venv active, key set):
+#   $env:PYTHONUTF8="1"
+#   .venv/Scripts/python.exe -m src.eval.run --config configs/openai_strong.yaml --method guidance_verify_repair
+#   .venv/Scripts/python.exe -m src.eval.run --config configs/openai_strong.yaml --method guidance_verify
+# -> results/cost_log_strong_guidance_verify_repair.csv  (compare vs results/cost_log_guidance_verify_repair.csv)
+
+domain: telecom
+task_set: telecom_small
+benchmark_commit: ""
+max_steps: 100
+
+subset:
+  size: 20
+  seed: 0
+
+rollout:
+  trials: 4
+  method: guidance_verify_repair
+
+eval:
+  k: 2
+
+base_model:
+  model: "gpt-4.1-mini"          # UNCHANGED base agent + user sim
+  temperature: 0.7
+
+verifier_model:
+  model: "gpt-4.1"               # UPGRADED verifier + repair (was gpt-4o-mini)
+  temperature: 0.0
+  max_tokens: 512
+
+paths:
+  rubric: "configs/rubrics/telecom.json"
+  cost_log: "results/cost_log_strong.csv"   # -> cost_log_strong_<method>.csv
